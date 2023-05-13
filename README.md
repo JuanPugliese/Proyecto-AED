@@ -1,34 +1,34 @@
-# Repositorio de Análisis de Accidentes Viales en Guadalupe
+# Repository of Road Accident Analysis in Guadalupe
 
-¡Bienvenido/a al repositorio de Análisis de Accidentes Viales en Guadalupe! Este repositorio tiene como objetivo analizar las principales causas de los accidentes viales en Guadalupe, México, y proponer medidas específicas para reducir su incidencia en las vialidades con mayor frecuencia de accidentes y en los asentamientos con mayor riesgo.
+Welcome to the Guadalupe Road Accident Analysis repository! This repository aims to analyze the main causes of road accidents in Guadalupe, Mexico, and propose specific measures to reduce their incidence in the roads with higher frequency of accidents and in the settlements with higher risk.
 
-## Descripción
+## Description
 
-El objetivo de este proyecto es analizar la base de datos de accidentes viales en Guadalupe y determinar las principales causas que los originan. Para ello, se consideran diversos factores, como la fecha y hora del accidente, el tipo de accidente, el origen del reporte, el nombre y tipo del asentamiento donde ocurren los hechos, y la resolución del accidente.
+The objective of this project is to analyze the database of road accidents in Guadalupe and to determine the main causes that originate them. For this purpose, several factors are considered, such as the date and time of the accident, the type of accident, the origin of the report, the name and type of the settlement where the events occur, and the resolution of the accident.
 
-## Problema a resolver
+## Problem to be solved
 
-El problema a resolver es identificar las principales causas de los accidentes viales en Guadalupe y proponer medidas específicas para reducir su incidencia en las vialidades con mayor frecuencia de accidentes y en los asentamientos con mayor riesgo. Para lograr esto, se deben realizar análisis detallados de los registros de accidentes, considerando diferentes aspectos como horarios, zonas de contingencias, festividades, tipos de accidentes, vialidades y asentamientos.
+The problem to be solved is to identify the main causes of road accidents in Guadalupe and to propose specific measures to reduce their incidence in the roads with the highest frequency of accidents and in the settlements with the highest risk. To achieve this, detailed analysis of accident records must be carried out, considering different aspects such as schedules, contingency zones, holidays, types of accidents, roads and settlements.
 
-## Reglas de negocio generadas
+## Business rules generated
 
-A partir del análisis de la base de datos, se han generado las siguientes reglas de negocio:
+Based on the analysis of the database, the following business rules have been generated:
 
-1. Análisis de horarios y zonas de contingencias: Se realizará un análisis detallado de los horarios en los que ocurren los accidentes viales, así como la identificación de zonas con mayor incidencia. Esto permitirá establecer medidas específicas para prevenir accidentes en horarios críticos y en áreas de mayor riesgo.
+1. analysis of schedules and contingency zones: a detailed analysis of the schedules in which road accidents occur will be performed, as well as the identification of zones with higher incidence. This will allow us to establish specific measures to prevent accidents at critical times and in high-risk areas.
 
-2. Seguimiento y resolución de incidentes: Se llevará un proceso detallado sobre cada caso de accidente, considerando el tipo de accidente, el origen del reporte y la resolución del mismo. Esto proporcionará información valiosa para identificar patrones y establecer acciones correctivas o preventivas.
+2. Follow-up and resolution of incidents: A detailed process will be kept on each accident case, considering the type of accident, the origin of the report and its resolution. This will provide valuable information to identify patterns and establish corrective or preventive actions.
 
-3. Análisis de festividades y accidentes viales: Se utilizarán las fechas de los accidentes para identificar posibles problemáticas relacionadas con festividades. Esto permitirá implementar medidas especiales durante períodos festivos para prevenir accidentes.
+3. Analysis of holidays and road accidents: Accident dates will be used to identify possible problems related to holidays. This will allow the implementation of special measures during holiday periods to prevent accidents.
 
-4. Relación entre tipo de accidente y vialidad: Se analizará la relación entre el tipo de accidente y la vialidad donde ocurren. Esto ayudará a identificar si existen características específicas de las vías que contribuyen a ciertos tipos de accidentes, y así considerar cambios o mejoras en las vialidades de determinados asentamientos.
+4. Relationship between accident type and roadway: The relationship between the type of accident and the roadway where they occur will be analyzed. This will help to identify if there are specific characteristics of the roads that contribute to certain types of accidents, and thus consider changes or improvements to the roads in certain settlements.
 
-## Contribución
+## Contribution
 
-¡Agradecemos tu interés en contribuir a este proyecto! Si deseas colaborar, puedes seguir estos pasos:
+We appreciate your interest in contributing to this project! If you would like to contribute, please follow these steps:
 
-1. Haz un fork de este repositorio.
-2. Crea una rama nueva para tu análisis o propuestas.
-3. Realiza los análisis correspondientes y/o propón medidas específicas basadas en los datos disponibles.
-4. Envía un pull request describiendo tus contribuciones.
+1. Make a fork of this repository.
+2. Create a new branch for your analysis or proposals.
+3. Perform the corresponding analysis and/or propose specific measures based on the available data.
+4. Send a pull request describing your contributions.
 
-Te recomendamos seguir las pautas de contribución establecidas y respetar el código de conducta del proyecto.
+We recommend that you follow the established contribution guidelines and respect the project's code of conduct.
