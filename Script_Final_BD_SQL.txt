@@ -1,0 +1,33 @@
+CREATE TABLE asentamiento(
+	nombre varchar(40) PRIMARY KEY,
+	tipo varchar(40)
+);
+
+CREATE TABLE resolucion(
+	folio varchar(30) PRIMARY KEY,
+	estado varchar(20)
+);
+
+CREATE TABLE vialidad(
+	latitud varchar(30) unique not null,
+	longitud varchar(30) unique not null,
+	tipo varchar(30),
+	nombre varchar (45),
+	nombre_asentamiento varchar(40),
+	FOREIGN KEY (nombre_asentamiento) REFERENCES asentamiento(nombre),
+	PRIMARY KEY (latitud,longitud)
+);
+
+CREATE TABLE accidente(
+	folio varchar(20) PRIMARY KEY,
+	fecha date,
+	hora time,
+	tipo varchar(50),
+	origen_reporte varchar(25),
+	latitud_vialidad varchar(30),
+	longitud_vialidad varchar(30),
+	folio_resolucion varchar(20),
+	FOREIGN KEY (latitud_vialidad) REFERENCES vialidad(latitud),
+	FOREIGN KEY (longitud_vialidad) REFERENCES vialidad(longitud),
+	FOREIGN KEY (folio) REFERENCES resolucion(folio)
+);
