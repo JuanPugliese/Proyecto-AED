@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADT</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+  
+
+  <header class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg>
+        <span class="ml-3 text-xl">Librería Lorem</span>
+      </a>
+      <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+      </nav>
+      
+    </div>
+  </header>
+
+  <section class="text-gray-600 body-font" id="amounts">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-wrap -m-4 text-center">
+        <div class="p-4 sm:w-1/4 w-1/2" >
+          <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-900" id="bookAmount">0</h2>
+          <p class="leading-relaxed">Libros</p>
+        </div>
+        <div class="p-4 sm:w-1/4 w-1/2" >
+          <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-900" id="availableBookAmount">0</h2>
+          <p class="leading-relaxed">Libros Disponibles</p>
+        </div>
+        <div class="p-4 sm:w-1/4 w-1/2" >
+          <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-900" id="categoryAmount">0</h2>
+          <p class="leading-relaxed">Categorias</p>
+        </div>
+        <div class="p-4 sm:w-1/4 w-1/2">
+          <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-900" id="authorAmount">0</h2>
+          <p class="leading-relaxed">Autores</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container px-5 py-24 mx-auto flex">
+    <div class="bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md">
+      <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">Agrega un Libro!</h2>
+      <p class="leading-relaxed mb-5 text-gray-600">Incluye un libro en la colección de la librería</p>
+      <div class="relative mb-4">
+        <label for="email" class="leading-7 text-sm text-gray-600">Titulo del libro</label>
+        <input type="text" id="title" name="title" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+      </div>
+      <div class="relative mb-4">
+        <label for="email" class="leading-7 text-sm text-gray-600">Autor del libro</label>
+        <input type="text" id="author" name="author" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+      </div>
+      <div class="relative mb-4">
+        <label for="email" class="leading-7 text-sm text-gray-600">Categoria del libro</label>
+        <input type="text" id="category" name="category" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+      </div>
+      <div class="relative mb-4">
+        <label for="email" class="leading-7 text-sm text-gray-600">Año de publicación del libro</label>
+        <input type="number" id="year" name="year" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+      </div>
+      <button class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onclick="addBookToLibrary()">Agregar</button>
+    </div>
+  </div>
+
+
+  <section class="text-gray-600 body-font">
+    <div class="flex flex-col text-center w-full">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Libros Disponibles</h1>
+    </div>
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-wrap -m-2" id="bookList">
+      </div>
+    </div>
+  </section>
+
+  <section class="text-gray-600 body-font">
+    <div class="flex flex-col text-center w-full">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">Libros Prestados</h1>
+    </div>
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-wrap -m-2" id="borrowedBookList">
+      </div>
+    </div>
+  </section>
+
+  
+  <script>
+
+    class Book {
+      constructor(title, author, year, category){
+        this.title = title;
+        this.author = author;
+        this.year = year;
+        this.category = category;
+        this.available = true;
+        this.borrower = null;
+        this.borrowerId = null;
+      }
+    }
+
+    class Library {
+
+      constructor(){
+        this.books = [];
+      }
+
+      addBook(book){
+        this.books.push(book);
+      }
+
+      removeBook(book){
+        this.books.splice(this.books.indexOf(book), 1);
+      }
+
+      getBooks(){
+        return this.books;
+      }
+      
+      getBookAmount(){
+        return this.books.length;
+      }
+
+      getAuthorAmount(){
+        let authors = [];
+        this.books.forEach(book => {
+          if(!authors.includes(book.author)){
+            authors.push(book.author);
+          }
+        });
+        return authors.length;
+      }
+
+      getCategoryAmount() {
+        let categories = [];
+        this.books.forEach(book => {
+          if(!categories.includes(book.category)){
+            categories.push(book.category);
+          }
+        });
+        return categories.length;
+      }
+
+      getBookByTitle(title){
+        return this.books.find(book => book.title === title);
+      }
+
+      getBooksByAuthor(author){
+        return this.books.find(book => book.author === author);
+      }
+
+      getBooksByCategory(category){
+        return this.books.find(book => book.category === category);
+      }
+
+      getBooksByYear(year){
+        return this.books.find(book => book.year === year);
+      }
+
+      getAvailableBooks(){
+        return this.books.filter(book => book.available === true);
+      }
+
+      getBorrowedBooks(){
+        return this.books.filter(book => book.available === false);
+      }
+
+      borrowBook(book, borrower, borrowerId) {
+        if(book.available === true){
+          book.available = false;
+          book.borrower = borrower;
+          book.borrowerId = borrowerId;
+        }
+      }
+
+      returnBook(book){
+        if(book.available === false){
+          book.available = true;
+          book.borrower = null;
+          book.borrowerId = null;
+        }
+      }
+
+      getSortedBooksByYear(){
+        return this.books.sort((a, b) => a.year - b.year);
+      }
+
+    }
+
+    let library = new Library();
+    library.addBook(new Book("The Hobbit", "J.R.R. Tolkien", 1937, "Fantasy"));
+    library.addBook(new Book("The Fellowship of the Ring", "J.R.R. Tolkien", 1954, "Fantasy"));
+    library.addBook(new Book("The Two Towers", "J.R.R. Tolkien", 1954, "Fantasy"));
+    library.addBook(new Book("The Return of the King", "J.R.R. Tolkien", 1955, "Fantasy"));
+    library.addBook(new Book("The Lion, the Witch and the Wardrobe", "C.S. Lewis", 1950, "Fantasy"));
+    library.addBook(new Book("Prince Caspian", "C.S. Lewis", 1951, "Fantasy"));
+    library.addBook(new Book("The Voyage of the Dawn Treader", "C.S. Lewis", 1952, "Fantasy"));
+    library.addBook(new Book("The Silver Chair", "C.S. Lewis", 1953, "Fantasy"));
+    
+    
+    // Add amounts to the page
+    let bookAmount = document.getElementById("bookAmount");
+    let availableBookAmount = document.getElementById("availableBookAmount");
+    let categoryAmount = document.getElementById("categoryAmount");
+    let authorAmount = document.getElementById("authorAmount");
+
+    bookAmount.innerHTML = library.getBookAmount();
+    availableBookAmount.innerHTML = library.getAvailableBooks().length;
+    categoryAmount.innerHTML = library.getCategoryAmount();
+    authorAmount.innerHTML = library.getAuthorAmount();
+
+    const borrowBook = (book) => {
+      const name = prompt("Ingresa tu nombre completo");
+      const id = prompt("¿Cuál es tu numero de identificación?");
+      library.borrowBook(book, name, id);
+      refreshBookList();
+      refreshBorrowedBookList();
+    }
+    
+    const refreshBookList = () => {
+      let bookList = document.getElementById("bookList");
+      bookList.innerHTML = "";
+      let books = library.getAvailableBooks();
+      books.forEach(book => {
+        let bookContainer = document.createElement("div");
+        bookContainer.classList.add("p-2", "lg:w-1/3", "md:w-1/2", "w-full");
+  
+        // book container hover
+        bookContainer.addEventListener("mouseover", () => {
+          bookContainer.classList.add("shadow-xl");
+        });
+  
+        bookContainer.addEventListener("mouseout", () => {
+          bookContainer.classList.remove("shadow-xl");
+        });
+
+        let bookCard = document.createElement("div");
+        bookCard.classList.add("h-full", "flex", "items-center", "border-gray-200", "border", "p-4", "rounded-lg");
+        let bookImage = document.createElement("div");
+        bookImage.classList.add("w-16", "h-16", "bg-green-400", "object-cover", "object-center", "flex-shrink-0", "rounded-full", "mr-4");
+        let bookInfo = document.createElement("div");
+        bookInfo.classList.add("flex-grow");
+        let bookTitle = document.createElement("h2");
+        bookTitle.classList.add("text-gray-900", "title-font", "font-medium");
+        bookTitle.innerHTML = book.title;
+        let bookAuthor = document.createElement("p");
+        bookAuthor.classList.add("text-gray-500");
+        bookAuthor.innerHTML = `Por ${book.author} (${book.year})`;
+
+        let removeButton = document.createElement("button");
+        removeButton.classList.add("bg-red-500", "hover:bg-red-700", "text-white", "font-bold", "py-2", "px-4", "rounded", "text-xs", "justify-end");
+        removeButton.innerHTML = "X";
+        let borrowButton = document.createElement("button");
+        borrowButton.classList.add("bg-green-500", "hover:bg-green-700", "text-white", "font-bold", "py-2", "px-4", "rounded", "text-xs", "justify-end");
+        borrowButton.innerHTML = "Alquilar";
+
+        removeButton.addEventListener("click", () => {
+          library.removeBook(book);
+          refreshBookList();
+        });
+        borrowButton.addEventListener("click", () => {
+          borrowBook(book);
+        });
+        bookInfo.appendChild(borrowButton);
+        bookInfo.appendChild(removeButton);
+        bookInfo.appendChild(bookTitle);
+        bookInfo.appendChild(bookAuthor);
+        bookCard.appendChild(bookImage);
+        bookCard.appendChild(bookInfo);
+        bookContainer.appendChild(bookCard);
+        bookList.appendChild(bookContainer);
+  
+      });
+    }
+    
+
+    const refreshBorrowedBookList = () => {
+      let borrowedBookList = document.getElementById("borrowedBookList");
+      let borrowedBooks = library.getBorrowedBooks();
+      borrowedBookList.innerHTML = "";
+      
+      borrowedBooks.forEach(book => {
+        let bookContainer = document.createElement("button");
+        bookContainer.classList.add("p-2", "lg:w-1/3", "md:w-1/2", "w-full");
+
+        // book container hover
+        bookContainer.addEventListener("mouseover", () => {
+          bookContainer.classList.add("shadow-xl");
+        });
+
+        bookContainer.addEventListener("mouseout", () => {
+          bookContainer.classList.remove("shadow-xl");
+        });
+
+        // book container click
+        bookContainer.addEventListener("click", () => {
+          library.returnBook(book);
+          refreshBookList();
+          refreshBorrowedBookList();
+        });
+
+        let bookCard = document.createElement("div");
+        bookCard.classList.add("h-full", "flex", "items-center", "border-gray-200", "border", "p-4", "rounded-lg");
+        let bookImage = document.createElement("div");
+        bookImage.classList.add("w-16", "h-16", "bg-red-400", "object-cover", "object-center", "flex-shrink-0", "rounded-full", "mr-4");
+        let bookInfo = document.createElement("div");
+        bookInfo.classList.add("flex-grow");
+        let bookTitle = document.createElement("h2");
+        bookTitle.classList.add("text-gray-900", "title-font", "font-medium");
+        bookTitle.innerHTML = book.title;
+        let bookAuthor = document.createElement("p");
+        bookAuthor.classList.add("text-gray-500");
+        bookAuthor.innerHTML = `Rentado por:  ${book.borrower} (${book.borrowerId})`;
+
+        let returnButton = document.createElement("button");
+        returnButton.classList.add("bg-blue-500", "hover:bg-blue-700", "text-white", "font-bold", "py-2", "px-4", "rounded", "text-xs", "justify-end");
+        returnButton.innerHTML = "Devolver";
+
+        bookInfo.appendChild(returnButton);
+        bookInfo.appendChild(bookTitle);
+        bookInfo.appendChild(bookAuthor);
+        bookCard.appendChild(bookImage);
+        bookCard.appendChild(bookInfo);
+        bookContainer.appendChild(bookCard);
+        borrowedBookList.appendChild(bookContainer);
+
+      });
+    }
+
+    const addBookToLibrary = () => {
+
+      const title = document.getElementById("title").value;
+      const author = document.getElementById("author").value;
+      const year = document.getElementById("year").value;
+      const category = document.getElementById("category").value;
+
+      library.addBook(new Book(title, author, year, category));
+      refreshBookList();
+      refreshBorrowedBookList();
+
+      title.value = "";
+      author.value = "";
+      year.value = "";
+      category.value = "";
+    }
+
+    refreshBookList();
+    refreshBorrowedBookList();
+    
+  </script>
+
+</body>
+</html>
